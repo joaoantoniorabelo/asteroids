@@ -4,6 +4,7 @@
 # PyGame support ref: https://www.pygame.org/docs/ref/pygame.html
 import pygame
 from constants import *
+from player import Player
 
 def main():
     print("Starting asteroids!")
@@ -17,6 +18,11 @@ def main():
     clock = pygame.time.Clock()
     dt = 0
     
+    # Player spawn
+    player_x = SCREEN_WIDTH/2 # center screen x
+    player_y = SCREEN_HEIGHT/2 # center screen y
+    player = Player(player_x, player_y)
+    
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     
     # Game infinity loop
@@ -26,6 +32,8 @@ def main():
                 return        
         
         screen.fill("black")
+        player.draw(screen)
+                
         pygame.display.flip()
         dt = clock.tick(60) / 1000
     # end of infinity loop

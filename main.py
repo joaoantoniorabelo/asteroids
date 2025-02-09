@@ -13,17 +13,21 @@ def main():
     # Pygame start
     pygame.init()
     
+    # FPS
+    clock = pygame.time.Clock()
+    dt = 0
+    
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     
     # Game infinity loop
     while True:
-        screen.fill("black")
-        
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return        
         
-        pygame.display.flip()    
+        screen.fill("black")
+        pygame.display.flip()
+        dt = clock.tick(60) / 1000
     # end of infinity loop
     
 
